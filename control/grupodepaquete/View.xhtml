@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewGrupodepaqueteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewGrupodepaqueteLabel_idgdp}"/>
+                    <h:outputText value="#{grupodepaqueteController.selected.idgdp}" title="#{bundle.ViewGrupodepaqueteTitle_idgdp}"/>
+                    <h:outputText value="#{bundle.ViewGrupodepaqueteLabel_origengdp}"/>
+                    <h:outputText value="#{grupodepaqueteController.selected.origengdp}" title="#{bundle.ViewGrupodepaqueteTitle_origengdp}"/>
+                    <h:outputText value="#{bundle.ViewGrupodepaqueteLabel_destinogdp}"/>
+                    <h:outputText value="#{grupodepaqueteController.selected.destinogdp}" title="#{bundle.ViewGrupodepaqueteTitle_destinogdp}"/>
+                    <h:outputText value="#{bundle.ViewGrupodepaqueteLabel_fechagdp}"/>
+                    <h:outputText value="#{grupodepaqueteController.selected.fechagdp}" title="#{bundle.ViewGrupodepaqueteTitle_fechagdp}"/>
+                    <h:outputText value="#{bundle.ViewGrupodepaqueteLabel_asuntogdp}"/>
+                    <h:outputText value="#{grupodepaqueteController.selected.asuntogdp}" title="#{bundle.ViewGrupodepaqueteTitle_asuntogdp}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{grupodepaqueteController.destroyAndView}" value="#{bundle.ViewGrupodepaqueteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewGrupodepaqueteEditLink}"/>
+                <br />
+                <h:commandLink action="#{grupodepaqueteController.prepareCreate}" value="#{bundle.ViewGrupodepaqueteCreateLink}" />
+                <br />
+                <h:commandLink action="#{grupodepaqueteController.prepareList}" value="#{bundle.ViewGrupodepaqueteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewGrupodepaqueteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

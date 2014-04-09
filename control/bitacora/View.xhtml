@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBitacoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBitacoraLabel_idbit}"/>
+                    <h:outputText value="#{bitacoraController.selected.idbit}" title="#{bundle.ViewBitacoraTitle_idbit}"/>
+                    <h:outputText value="#{bundle.ViewBitacoraLabel_accionbit}"/>
+                    <h:outputText value="#{bitacoraController.selected.accionbit}" title="#{bundle.ViewBitacoraTitle_accionbit}"/>
+                    <h:outputText value="#{bundle.ViewBitacoraLabel_fechabit}"/>
+                    <h:outputText value="#{bitacoraController.selected.fechabit}" title="#{bundle.ViewBitacoraTitle_fechabit}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewBitacoraLabel_horabit}"/>
+                    <h:outputText value="#{bitacoraController.selected.horabit}" title="#{bundle.ViewBitacoraTitle_horabit}"/>
+                    <h:outputText value="#{bundle.ViewBitacoraLabel_observacionbit}"/>
+                    <h:outputText value="#{bitacoraController.selected.observacionbit}" title="#{bundle.ViewBitacoraTitle_observacionbit}"/>
+                    <h:outputText value="#{bundle.ViewBitacoraLabel_idusu}"/>
+                    <h:outputText value="#{bitacoraController.selected.idusu}" title="#{bundle.ViewBitacoraTitle_idusu}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{bitacoraController.destroyAndView}" value="#{bundle.ViewBitacoraDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBitacoraEditLink}"/>
+                <br />
+                <h:commandLink action="#{bitacoraController.prepareCreate}" value="#{bundle.ViewBitacoraCreateLink}" />
+                <br />
+                <h:commandLink action="#{bitacoraController.prepareList}" value="#{bundle.ViewBitacoraShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBitacoraIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

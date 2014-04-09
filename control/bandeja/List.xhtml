@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBandejaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBandejaEmpty}" rendered="#{bandejaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{bandejaController.items.rowCount > 0}">
+                    <h:outputText value="#{bandejaController.pagination.pageFirstItem + 1}..#{bandejaController.pagination.pageLastItem + 1}/#{bandejaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{bandejaController.previous}" value="#{bundle.Previous} #{bandejaController.pagination.pageSize}" rendered="#{bandejaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{bandejaController.next}" value="#{bundle.Next} #{bandejaController.pagination.pageSize}" rendered="#{bandejaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{bandejaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBandejaTitle_idban}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idban}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBandejaTitle_leidoban}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.leidoban}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBandejaTitle_idusu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idusu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBandejaTitle_idgdp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idgdp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBandejaTitle_idpaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBandejaTitle_idiba}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idiba}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{bandejaController.prepareView}" value="#{bundle.ListBandejaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bandejaController.prepareEdit}" value="#{bundle.ListBandejaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bandejaController.destroy}" value="#{bundle.ListBandejaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{bandejaController.prepareCreate}" value="#{bundle.ListBandejaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBandejaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

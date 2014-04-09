@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPermisologiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPermisologiaLabel_idper}" for="idper" />
+                    <h:inputText id="idper" value="#{permisologiaController.selected.idper}" title="#{bundle.EditPermisologiaTitle_idper}" required="true" requiredMessage="#{bundle.EditPermisologiaRequiredMessage_idper}"/>
+                    <h:outputLabel value="#{bundle.EditPermisologiaLabel_nombreper}" for="nombreper" />
+                    <h:inputText id="nombreper" value="#{permisologiaController.selected.nombreper}" title="#{bundle.EditPermisologiaTitle_nombreper}" />
+                    <h:outputLabel value="#{bundle.EditPermisologiaLabel_descripcionper}" for="descripcionper" />
+                    <h:inputText id="descripcionper" value="#{permisologiaController.selected.descripcionper}" title="#{bundle.EditPermisologiaTitle_descripcionper}" />
+                    <h:outputLabel value="#{bundle.EditPermisologiaLabel_lecturaper}" for="lecturaper" />
+                    <h:inputText id="lecturaper" value="#{permisologiaController.selected.lecturaper}" title="#{bundle.EditPermisologiaTitle_lecturaper}" />
+                    <h:outputLabel value="#{bundle.EditPermisologiaLabel_escrituraper}" for="escrituraper" />
+                    <h:inputText id="escrituraper" value="#{permisologiaController.selected.escrituraper}" title="#{bundle.EditPermisologiaTitle_escrituraper}" />
+                    <h:outputLabel value="#{bundle.EditPermisologiaLabel_modificacionper}" for="modificacionper" />
+                    <h:inputText id="modificacionper" value="#{permisologiaController.selected.modificacionper}" title="#{bundle.EditPermisologiaTitle_modificacionper}" />
+                    <h:outputLabel value="#{bundle.EditPermisologiaLabel_deshabilitarper}" for="deshabilitarper" />
+                    <h:inputText id="deshabilitarper" value="#{permisologiaController.selected.deshabilitarper}" title="#{bundle.EditPermisologiaTitle_deshabilitarper}" />
+                </h:panelGrid>
+                <h:commandLink action="#{permisologiaController.update}" value="#{bundle.EditPermisologiaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPermisologiaViewLink}"/>
+                <br />
+                <h:commandLink action="#{permisologiaController.prepareList}" value="#{bundle.EditPermisologiaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPermisologiaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

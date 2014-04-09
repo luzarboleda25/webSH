@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSeguimientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSeguimientoLabel_idseg}" for="idseg" />
+                    <h:inputText id="idseg" value="#{seguimientoController.selected.idseg}" title="#{bundle.CreateSeguimientoTitle_idseg}" required="true" requiredMessage="#{bundle.CreateSeguimientoRequiredMessage_idseg}"/>
+                    <h:outputLabel value="#{bundle.CreateSeguimientoLabel_fechaseg}" for="fechaseg" />
+                    <h:inputText id="fechaseg" value="#{seguimientoController.selected.fechaseg}" title="#{bundle.CreateSeguimientoTitle_fechaseg}" required="true" requiredMessage="#{bundle.CreateSeguimientoRequiredMessage_fechaseg}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSeguimientoLabel_statusseg}" for="statusseg" />
+                    <h:inputText id="statusseg" value="#{seguimientoController.selected.statusseg}" title="#{bundle.CreateSeguimientoTitle_statusseg}" />
+                    <h:outputLabel value="#{bundle.CreateSeguimientoLabel_idusu}" for="idusu" />
+                    <h:selectOneMenu id="idusu" value="#{seguimientoController.selected.idusu}" title="#{bundle.CreateSeguimientoTitle_idusu}" required="true" requiredMessage="#{bundle.CreateSeguimientoRequiredMessage_idusu}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSeguimientoLabel_idpaq}" for="idpaq" />
+                    <h:selectOneMenu id="idpaq" value="#{seguimientoController.selected.idpaq}" title="#{bundle.CreateSeguimientoTitle_idpaq}" required="true" requiredMessage="#{bundle.CreateSeguimientoRequiredMessage_idpaq}">
+                        <f:selectItems value="#{paqueteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{seguimientoController.create}" value="#{bundle.CreateSeguimientoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{seguimientoController.prepareList}" value="#{bundle.CreateSeguimientoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSeguimientoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

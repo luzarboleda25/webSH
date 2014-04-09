@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOrganizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOrganizacionLabel_idorg}" for="idorg" />
+                    <h:inputText id="idorg" value="#{organizacionController.selected.idorg}" title="#{bundle.EditOrganizacionTitle_idorg}" required="true" requiredMessage="#{bundle.EditOrganizacionRequiredMessage_idorg}"/>
+                    <h:outputLabel value="#{bundle.EditOrganizacionLabel_nombreorg}" for="nombreorg" />
+                    <h:inputText id="nombreorg" value="#{organizacionController.selected.nombreorg}" title="#{bundle.EditOrganizacionTitle_nombreorg}" required="true" requiredMessage="#{bundle.EditOrganizacionRequiredMessage_nombreorg}"/>
+                    <h:outputLabel value="#{bundle.EditOrganizacionLabel_descripcionorg}" for="descripcionorg" />
+                    <h:inputText id="descripcionorg" value="#{organizacionController.selected.descripcionorg}" title="#{bundle.EditOrganizacionTitle_descripcionorg}" />
+                </h:panelGrid>
+                <h:commandLink action="#{organizacionController.update}" value="#{bundle.EditOrganizacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOrganizacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{organizacionController.prepareList}" value="#{bundle.EditOrganizacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOrganizacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

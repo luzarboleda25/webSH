@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSedeLabel_idsed}"/>
+                    <h:outputText value="#{sedeController.selected.idsed}" title="#{bundle.ViewSedeTitle_idsed}"/>
+                    <h:outputText value="#{bundle.ViewSedeLabel_nombresed}"/>
+                    <h:outputText value="#{sedeController.selected.nombresed}" title="#{bundle.ViewSedeTitle_nombresed}"/>
+                    <h:outputText value="#{bundle.ViewSedeLabel_direccionsed}"/>
+                    <h:outputText value="#{sedeController.selected.direccionsed}" title="#{bundle.ViewSedeTitle_direccionsed}"/>
+                    <h:outputText value="#{bundle.ViewSedeLabel_telefonosed}"/>
+                    <h:outputText value="#{sedeController.selected.telefonosed}" title="#{bundle.ViewSedeTitle_telefonosed}"/>
+                    <h:outputText value="#{bundle.ViewSedeLabel_telefono2sed}"/>
+                    <h:outputText value="#{sedeController.selected.telefono2sed}" title="#{bundle.ViewSedeTitle_telefono2sed}"/>
+                    <h:outputText value="#{bundle.ViewSedeLabel_idorg}"/>
+                    <h:outputText value="#{sedeController.selected.idorg}" title="#{bundle.ViewSedeTitle_idorg}"/>
+                    <h:outputText value="#{bundle.ViewSedeLabel_borradosed}"/>
+                    <h:outputText value="#{sedeController.selected.borradosed}" title="#{bundle.ViewSedeTitle_borradosed}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sedeController.destroyAndView}" value="#{bundle.ViewSedeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSedeEditLink}"/>
+                <br />
+                <h:commandLink action="#{sedeController.prepareCreate}" value="#{bundle.ViewSedeCreateLink}" />
+                <br />
+                <h:commandLink action="#{sedeController.prepareList}" value="#{bundle.ViewSedeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSedeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGrupodepaqueteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGrupodepaqueteLabel_idgdp}" for="idgdp" />
+                    <h:inputText id="idgdp" value="#{grupodepaqueteController.selected.idgdp}" title="#{bundle.CreateGrupodepaqueteTitle_idgdp}" required="true" requiredMessage="#{bundle.CreateGrupodepaqueteRequiredMessage_idgdp}"/>
+                    <h:outputLabel value="#{bundle.CreateGrupodepaqueteLabel_origengdp}" for="origengdp" />
+                    <h:inputText id="origengdp" value="#{grupodepaqueteController.selected.origengdp}" title="#{bundle.CreateGrupodepaqueteTitle_origengdp}" required="true" requiredMessage="#{bundle.CreateGrupodepaqueteRequiredMessage_origengdp}"/>
+                    <h:outputLabel value="#{bundle.CreateGrupodepaqueteLabel_destinogdp}" for="destinogdp" />
+                    <h:inputText id="destinogdp" value="#{grupodepaqueteController.selected.destinogdp}" title="#{bundle.CreateGrupodepaqueteTitle_destinogdp}" required="true" requiredMessage="#{bundle.CreateGrupodepaqueteRequiredMessage_destinogdp}"/>
+                    <h:outputLabel value="#{bundle.CreateGrupodepaqueteLabel_fechagdp}" for="fechagdp" />
+                    <h:inputText id="fechagdp" value="#{grupodepaqueteController.selected.fechagdp}" title="#{bundle.CreateGrupodepaqueteTitle_fechagdp}" required="true" requiredMessage="#{bundle.CreateGrupodepaqueteRequiredMessage_fechagdp}"/>
+                    <h:outputLabel value="#{bundle.CreateGrupodepaqueteLabel_asuntogdp}" for="asuntogdp" />
+                    <h:inputText id="asuntogdp" value="#{grupodepaqueteController.selected.asuntogdp}" title="#{bundle.CreateGrupodepaqueteTitle_asuntogdp}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{grupodepaqueteController.create}" value="#{bundle.CreateGrupodepaqueteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{grupodepaqueteController.prepareList}" value="#{bundle.CreateGrupodepaqueteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGrupodepaqueteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

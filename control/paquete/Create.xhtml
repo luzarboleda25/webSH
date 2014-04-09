@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePaqueteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_idpaq}" for="idpaq" />
+                    <h:inputText id="idpaq" value="#{paqueteController.selected.idpaq}" title="#{bundle.CreatePaqueteTitle_idpaq}" required="true" requiredMessage="#{bundle.CreatePaqueteRequiredMessage_idpaq}"/>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_asuntopaq}" for="asuntopaq" />
+                    <h:inputText id="asuntopaq" value="#{paqueteController.selected.asuntopaq}" title="#{bundle.CreatePaqueteTitle_asuntopaq}" />
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_textopaq}" for="textopaq" />
+                    <h:inputText id="textopaq" value="#{paqueteController.selected.textopaq}" title="#{bundle.CreatePaqueteTitle_textopaq}" />
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_fechapaq}" for="fechapaq" />
+                    <h:inputText id="fechapaq" value="#{paqueteController.selected.fechapaq}" title="#{bundle.CreatePaqueteTitle_fechapaq}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_fechaenviopaq}" for="fechaenviopaq" />
+                    <h:inputText id="fechaenviopaq" value="#{paqueteController.selected.fechaenviopaq}" title="#{bundle.CreatePaqueteTitle_fechaenviopaq}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_fechaapaq}" for="fechaapaq" />
+                    <h:inputText id="fechaapaq" value="#{paqueteController.selected.fechaapaq}" title="#{bundle.CreatePaqueteTitle_fechaapaq}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_statuspaq}" for="statuspaq" />
+                    <h:inputText id="statuspaq" value="#{paqueteController.selected.statuspaq}" title="#{bundle.CreatePaqueteTitle_statuspaq}" />
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_localizacionpaq}" for="localizacionpaq" />
+                    <h:inputText id="localizacionpaq" value="#{paqueteController.selected.localizacionpaq}" title="#{bundle.CreatePaqueteTitle_localizacionpaq}" />
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_idadj}" for="idadj" />
+                    <h:inputText id="idadj" value="#{paqueteController.selected.idadj}" title="#{bundle.CreatePaqueteTitle_idadj}" />
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_idval}" for="idval" />
+                    <h:selectOneMenu id="idval" value="#{paqueteController.selected.idval}" title="#{bundle.CreatePaqueteTitle_idval}" >
+                        <f:selectItems value="#{valijaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_destinopaq}" for="destinopaq" />
+                    <h:selectOneMenu id="destinopaq" value="#{paqueteController.selected.destinopaq}" title="#{bundle.CreatePaqueteTitle_destinopaq}" required="true" requiredMessage="#{bundle.CreatePaqueteRequiredMessage_destinopaq}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_origenpaq}" for="origenpaq" />
+                    <h:selectOneMenu id="origenpaq" value="#{paqueteController.selected.origenpaq}" title="#{bundle.CreatePaqueteTitle_origenpaq}" required="true" requiredMessage="#{bundle.CreatePaqueteRequiredMessage_origenpaq}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_idpri}" for="idpri" />
+                    <h:selectOneMenu id="idpri" value="#{paqueteController.selected.idpri}" title="#{bundle.CreatePaqueteTitle_idpri}" >
+                        <f:selectItems value="#{prioridadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_idmen}" for="idmen" />
+                    <h:selectOneMenu id="idmen" value="#{paqueteController.selected.idmen}" title="#{bundle.CreatePaqueteTitle_idmen}" >
+                        <f:selectItems value="#{mensajeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePaqueteLabel_iddoc}" for="iddoc" />
+                    <h:selectOneMenu id="iddoc" value="#{paqueteController.selected.iddoc}" title="#{bundle.CreatePaqueteTitle_iddoc}" required="true" requiredMessage="#{bundle.CreatePaqueteRequiredMessage_iddoc}">
+                        <f:selectItems value="#{documentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paqueteController.create}" value="#{bundle.CreatePaqueteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{paqueteController.prepareList}" value="#{bundle.CreatePaqueteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePaqueteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

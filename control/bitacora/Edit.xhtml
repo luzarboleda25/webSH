@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBitacoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBitacoraLabel_idbit}" for="idbit" />
+                    <h:inputText id="idbit" value="#{bitacoraController.selected.idbit}" title="#{bundle.EditBitacoraTitle_idbit}" required="true" requiredMessage="#{bundle.EditBitacoraRequiredMessage_idbit}"/>
+                    <h:outputLabel value="#{bundle.EditBitacoraLabel_accionbit}" for="accionbit" />
+                    <h:inputText id="accionbit" value="#{bitacoraController.selected.accionbit}" title="#{bundle.EditBitacoraTitle_accionbit}" required="true" requiredMessage="#{bundle.EditBitacoraRequiredMessage_accionbit}"/>
+                    <h:outputLabel value="#{bundle.EditBitacoraLabel_fechabit}" for="fechabit" />
+                    <h:inputText id="fechabit" value="#{bitacoraController.selected.fechabit}" title="#{bundle.EditBitacoraTitle_fechabit}" required="true" requiredMessage="#{bundle.EditBitacoraRequiredMessage_fechabit}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBitacoraLabel_horabit}" for="horabit" />
+                    <h:inputText id="horabit" value="#{bitacoraController.selected.horabit}" title="#{bundle.EditBitacoraTitle_horabit}" />
+                    <h:outputLabel value="#{bundle.EditBitacoraLabel_observacionbit}" for="observacionbit" />
+                    <h:inputText id="observacionbit" value="#{bitacoraController.selected.observacionbit}" title="#{bundle.EditBitacoraTitle_observacionbit}" />
+                    <h:outputLabel value="#{bundle.EditBitacoraLabel_idusu}" for="idusu" />
+                    <h:selectOneMenu id="idusu" value="#{bitacoraController.selected.idusu}" title="#{bundle.EditBitacoraTitle_idusu}" required="true" requiredMessage="#{bundle.EditBitacoraRequiredMessage_idusu}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{bitacoraController.update}" value="#{bundle.EditBitacoraSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBitacoraViewLink}"/>
+                <br />
+                <h:commandLink action="#{bitacoraController.prepareList}" value="#{bundle.EditBitacoraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBitacoraIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

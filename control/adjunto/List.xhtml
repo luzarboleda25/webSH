@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAdjuntoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAdjuntoEmpty}" rendered="#{adjuntoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{adjuntoController.items.rowCount > 0}">
+                    <h:outputText value="#{adjuntoController.pagination.pageFirstItem + 1}..#{adjuntoController.pagination.pageLastItem + 1}/#{adjuntoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{adjuntoController.previous}" value="#{bundle.Previous} #{adjuntoController.pagination.pageSize}" rendered="#{adjuntoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{adjuntoController.next}" value="#{bundle.Next} #{adjuntoController.pagination.pageSize}" rendered="#{adjuntoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{adjuntoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdjuntoTitle_idadj}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idadj}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdjuntoTitle_nombreadj}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreadj}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdjuntoTitle_urladj}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.urladj}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdjuntoTitle_iddoc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddoc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdjuntoTitle_idpaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{adjuntoController.prepareView}" value="#{bundle.ListAdjuntoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{adjuntoController.prepareEdit}" value="#{bundle.ListAdjuntoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{adjuntoController.destroy}" value="#{bundle.ListAdjuntoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{adjuntoController.prepareCreate}" value="#{bundle.ListAdjuntoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAdjuntoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

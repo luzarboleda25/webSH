@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAreatrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAreatrabajoLabel_idatr}" for="idatr" />
+                    <h:inputText id="idatr" value="#{areatrabajoController.selected.idatr}" title="#{bundle.EditAreatrabajoTitle_idatr}" required="true" requiredMessage="#{bundle.EditAreatrabajoRequiredMessage_idatr}"/>
+                    <h:outputLabel value="#{bundle.EditAreatrabajoLabel_nombreatr}" for="nombreatr" />
+                    <h:inputText id="nombreatr" value="#{areatrabajoController.selected.nombreatr}" title="#{bundle.EditAreatrabajoTitle_nombreatr}" />
+                    <h:outputLabel value="#{bundle.EditAreatrabajoLabel_descripcionatr}" for="descripcionatr" />
+                    <h:inputText id="descripcionatr" value="#{areatrabajoController.selected.descripcionatr}" title="#{bundle.EditAreatrabajoTitle_descripcionatr}" />
+                </h:panelGrid>
+                <h:commandLink action="#{areatrabajoController.update}" value="#{bundle.EditAreatrabajoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAreatrabajoViewLink}"/>
+                <br />
+                <h:commandLink action="#{areatrabajoController.prepareList}" value="#{bundle.EditAreatrabajoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAreatrabajoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

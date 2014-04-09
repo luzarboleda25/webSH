@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPaqueteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_idpaq}"/>
+                    <h:outputText value="#{paqueteController.selected.idpaq}" title="#{bundle.ViewPaqueteTitle_idpaq}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_asuntopaq}"/>
+                    <h:outputText value="#{paqueteController.selected.asuntopaq}" title="#{bundle.ViewPaqueteTitle_asuntopaq}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_textopaq}"/>
+                    <h:outputText value="#{paqueteController.selected.textopaq}" title="#{bundle.ViewPaqueteTitle_textopaq}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_fechapaq}"/>
+                    <h:outputText value="#{paqueteController.selected.fechapaq}" title="#{bundle.ViewPaqueteTitle_fechapaq}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_fechaenviopaq}"/>
+                    <h:outputText value="#{paqueteController.selected.fechaenviopaq}" title="#{bundle.ViewPaqueteTitle_fechaenviopaq}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_fechaapaq}"/>
+                    <h:outputText value="#{paqueteController.selected.fechaapaq}" title="#{bundle.ViewPaqueteTitle_fechaapaq}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_statuspaq}"/>
+                    <h:outputText value="#{paqueteController.selected.statuspaq}" title="#{bundle.ViewPaqueteTitle_statuspaq}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_localizacionpaq}"/>
+                    <h:outputText value="#{paqueteController.selected.localizacionpaq}" title="#{bundle.ViewPaqueteTitle_localizacionpaq}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_idadj}"/>
+                    <h:outputText value="#{paqueteController.selected.idadj}" title="#{bundle.ViewPaqueteTitle_idadj}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_idval}"/>
+                    <h:outputText value="#{paqueteController.selected.idval}" title="#{bundle.ViewPaqueteTitle_idval}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_destinopaq}"/>
+                    <h:outputText value="#{paqueteController.selected.destinopaq}" title="#{bundle.ViewPaqueteTitle_destinopaq}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_origenpaq}"/>
+                    <h:outputText value="#{paqueteController.selected.origenpaq}" title="#{bundle.ViewPaqueteTitle_origenpaq}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_idpri}"/>
+                    <h:outputText value="#{paqueteController.selected.idpri}" title="#{bundle.ViewPaqueteTitle_idpri}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_idmen}"/>
+                    <h:outputText value="#{paqueteController.selected.idmen}" title="#{bundle.ViewPaqueteTitle_idmen}"/>
+                    <h:outputText value="#{bundle.ViewPaqueteLabel_iddoc}"/>
+                    <h:outputText value="#{paqueteController.selected.iddoc}" title="#{bundle.ViewPaqueteTitle_iddoc}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paqueteController.destroyAndView}" value="#{bundle.ViewPaqueteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPaqueteEditLink}"/>
+                <br />
+                <h:commandLink action="#{paqueteController.prepareCreate}" value="#{bundle.ViewPaqueteCreateLink}" />
+                <br />
+                <h:commandLink action="#{paqueteController.prepareList}" value="#{bundle.ViewPaqueteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPaqueteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

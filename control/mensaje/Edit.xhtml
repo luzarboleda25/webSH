@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMensajeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMensajeLabel_idmen}" for="idmen" />
+                    <h:inputText id="idmen" value="#{mensajeController.selected.idmen}" title="#{bundle.EditMensajeTitle_idmen}" required="true" requiredMessage="#{bundle.EditMensajeRequiredMessage_idmen}"/>
+                    <h:outputLabel value="#{bundle.EditMensajeLabel_nombremen}" for="nombremen" />
+                    <h:inputText id="nombremen" value="#{mensajeController.selected.nombremen}" title="#{bundle.EditMensajeTitle_nombremen}" required="true" requiredMessage="#{bundle.EditMensajeRequiredMessage_nombremen}"/>
+                    <h:outputLabel value="#{bundle.EditMensajeLabel_descripcionmen}" for="descripcionmen" />
+                    <h:inputText id="descripcionmen" value="#{mensajeController.selected.descripcionmen}" title="#{bundle.EditMensajeTitle_descripcionmen}" required="true" requiredMessage="#{bundle.EditMensajeRequiredMessage_descripcionmen}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{mensajeController.update}" value="#{bundle.EditMensajeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMensajeViewLink}"/>
+                <br />
+                <h:commandLink action="#{mensajeController.prepareList}" value="#{bundle.EditMensajeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMensajeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

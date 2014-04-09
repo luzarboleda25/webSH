@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPaquetegrupoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPaquetegrupoEmpty}" rendered="#{paquetegrupoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{paquetegrupoController.items.rowCount > 0}">
+                    <h:outputText value="#{paquetegrupoController.pagination.pageFirstItem + 1}..#{paquetegrupoController.pagination.pageLastItem + 1}/#{paquetegrupoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{paquetegrupoController.previous}" value="#{bundle.Previous} #{paquetegrupoController.pagination.pageSize}" rendered="#{paquetegrupoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{paquetegrupoController.next}" value="#{bundle.Next} #{paquetegrupoController.pagination.pageSize}" rendered="#{paquetegrupoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{paquetegrupoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaquetegrupoTitle_idpgr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpgr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaquetegrupoTitle_idpaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaquetegrupoTitle_idgdp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idgdp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{paquetegrupoController.prepareView}" value="#{bundle.ListPaquetegrupoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{paquetegrupoController.prepareEdit}" value="#{bundle.ListPaquetegrupoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{paquetegrupoController.destroy}" value="#{bundle.ListPaquetegrupoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{paquetegrupoController.prepareCreate}" value="#{bundle.ListPaquetegrupoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPaquetegrupoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

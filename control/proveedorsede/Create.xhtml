@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProveedorsedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProveedorsedeLabel_idpse}" for="idpse" />
+                    <h:inputText id="idpse" value="#{proveedorsedeController.selected.idpse}" title="#{bundle.CreateProveedorsedeTitle_idpse}" required="true" requiredMessage="#{bundle.CreateProveedorsedeRequiredMessage_idpse}"/>
+                    <h:outputLabel value="#{bundle.CreateProveedorsedeLabel_idsed}" for="idsed" />
+                    <h:selectOneMenu id="idsed" value="#{proveedorsedeController.selected.idsed}" title="#{bundle.CreateProveedorsedeTitle_idsed}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProveedorsedeLabel_idpro}" for="idpro" />
+                    <h:selectOneMenu id="idpro" value="#{proveedorsedeController.selected.idpro}" title="#{bundle.CreateProveedorsedeTitle_idpro}" >
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{proveedorsedeController.create}" value="#{bundle.CreateProveedorsedeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{proveedorsedeController.prepareList}" value="#{bundle.CreateProveedorsedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProveedorsedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_idsed}" for="idsed" />
+                    <h:inputText id="idsed" value="#{sedeController.selected.idsed}" title="#{bundle.CreateSedeTitle_idsed}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_idsed}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_nombresed}" for="nombresed" />
+                    <h:inputText id="nombresed" value="#{sedeController.selected.nombresed}" title="#{bundle.CreateSedeTitle_nombresed}" />
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_direccionsed}" for="direccionsed" />
+                    <h:inputText id="direccionsed" value="#{sedeController.selected.direccionsed}" title="#{bundle.CreateSedeTitle_direccionsed}" />
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_telefonosed}" for="telefonosed" />
+                    <h:inputText id="telefonosed" value="#{sedeController.selected.telefonosed}" title="#{bundle.CreateSedeTitle_telefonosed}" />
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_telefono2sed}" for="telefono2sed" />
+                    <h:inputText id="telefono2sed" value="#{sedeController.selected.telefono2sed}" title="#{bundle.CreateSedeTitle_telefono2sed}" />
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_idorg}" for="idorg" />
+                    <h:selectOneMenu id="idorg" value="#{sedeController.selected.idorg}" title="#{bundle.CreateSedeTitle_idorg}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_idorg}">
+                        <f:selectItems value="#{organizacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_borradosed}" for="borradosed" />
+                    <h:inputText id="borradosed" value="#{sedeController.selected.borradosed}" title="#{bundle.CreateSedeTitle_borradosed}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sedeController.create}" value="#{bundle.CreateSedeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sedeController.prepareList}" value="#{bundle.CreateSedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

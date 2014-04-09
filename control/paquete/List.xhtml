@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPaqueteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPaqueteEmpty}" rendered="#{paqueteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{paqueteController.items.rowCount > 0}">
+                    <h:outputText value="#{paqueteController.pagination.pageFirstItem + 1}..#{paqueteController.pagination.pageLastItem + 1}/#{paqueteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{paqueteController.previous}" value="#{bundle.Previous} #{paqueteController.pagination.pageSize}" rendered="#{paqueteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{paqueteController.next}" value="#{bundle.Next} #{paqueteController.pagination.pageSize}" rendered="#{paqueteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{paqueteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_idpaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_asuntopaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.asuntopaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_textopaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.textopaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_fechapaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechapaq}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_fechaenviopaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaenviopaq}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_fechaapaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaapaq}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_statuspaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.statuspaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_localizacionpaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localizacionpaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_idadj}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idadj}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_idval}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idval}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_destinopaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.destinopaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_origenpaq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.origenpaq}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_idpri}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpri}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_idmen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idmen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaqueteTitle_iddoc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddoc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{paqueteController.prepareView}" value="#{bundle.ListPaqueteViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{paqueteController.prepareEdit}" value="#{bundle.ListPaqueteEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{paqueteController.destroy}" value="#{bundle.ListPaqueteDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{paqueteController.prepareCreate}" value="#{bundle.ListPaqueteCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPaqueteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

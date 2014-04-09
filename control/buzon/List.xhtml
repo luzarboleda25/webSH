@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBuzonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBuzonEmpty}" rendered="#{buzonController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{buzonController.items.rowCount > 0}">
+                    <h:outputText value="#{buzonController.pagination.pageFirstItem + 1}..#{buzonController.pagination.pageLastItem + 1}/#{buzonController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{buzonController.previous}" value="#{bundle.Previous} #{buzonController.pagination.pageSize}" rendered="#{buzonController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{buzonController.next}" value="#{bundle.Next} #{buzonController.pagination.pageSize}" rendered="#{buzonController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{buzonController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuzonTitle_idbuz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idbuz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuzonTitle_tipobuz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipobuz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuzonTitle_observacionbuz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionbuz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuzonTitle_telefonobuz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonobuz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuzonTitle_nombrebuz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombrebuz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuzonTitle_idusubuz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idusubuz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuzonTitle_idusu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idusu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{buzonController.prepareView}" value="#{bundle.ListBuzonViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{buzonController.prepareEdit}" value="#{bundle.ListBuzonEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{buzonController.destroy}" value="#{bundle.ListBuzonDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{buzonController.prepareCreate}" value="#{bundle.ListBuzonCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBuzonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

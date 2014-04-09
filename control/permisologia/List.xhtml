@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPermisologiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPermisologiaEmpty}" rendered="#{permisologiaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{permisologiaController.items.rowCount > 0}">
+                    <h:outputText value="#{permisologiaController.pagination.pageFirstItem + 1}..#{permisologiaController.pagination.pageLastItem + 1}/#{permisologiaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{permisologiaController.previous}" value="#{bundle.Previous} #{permisologiaController.pagination.pageSize}" rendered="#{permisologiaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{permisologiaController.next}" value="#{bundle.Next} #{permisologiaController.pagination.pageSize}" rendered="#{permisologiaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{permisologiaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisologiaTitle_idper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisologiaTitle_nombreper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisologiaTitle_descripcionper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisologiaTitle_lecturaper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lecturaper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisologiaTitle_escrituraper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.escrituraper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisologiaTitle_modificacionper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificacionper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisologiaTitle_deshabilitarper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deshabilitarper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{permisologiaController.prepareView}" value="#{bundle.ListPermisologiaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{permisologiaController.prepareEdit}" value="#{bundle.ListPermisologiaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{permisologiaController.destroy}" value="#{bundle.ListPermisologiaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{permisologiaController.prepareCreate}" value="#{bundle.ListPermisologiaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPermisologiaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

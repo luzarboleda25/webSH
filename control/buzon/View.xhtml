@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBuzonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBuzonLabel_idbuz}"/>
+                    <h:outputText value="#{buzonController.selected.idbuz}" title="#{bundle.ViewBuzonTitle_idbuz}"/>
+                    <h:outputText value="#{bundle.ViewBuzonLabel_tipobuz}"/>
+                    <h:outputText value="#{buzonController.selected.tipobuz}" title="#{bundle.ViewBuzonTitle_tipobuz}"/>
+                    <h:outputText value="#{bundle.ViewBuzonLabel_observacionbuz}"/>
+                    <h:outputText value="#{buzonController.selected.observacionbuz}" title="#{bundle.ViewBuzonTitle_observacionbuz}"/>
+                    <h:outputText value="#{bundle.ViewBuzonLabel_telefonobuz}"/>
+                    <h:outputText value="#{buzonController.selected.telefonobuz}" title="#{bundle.ViewBuzonTitle_telefonobuz}"/>
+                    <h:outputText value="#{bundle.ViewBuzonLabel_nombrebuz}"/>
+                    <h:outputText value="#{buzonController.selected.nombrebuz}" title="#{bundle.ViewBuzonTitle_nombrebuz}"/>
+                    <h:outputText value="#{bundle.ViewBuzonLabel_idusubuz}"/>
+                    <h:outputText value="#{buzonController.selected.idusubuz}" title="#{bundle.ViewBuzonTitle_idusubuz}"/>
+                    <h:outputText value="#{bundle.ViewBuzonLabel_idusu}"/>
+                    <h:outputText value="#{buzonController.selected.idusu}" title="#{bundle.ViewBuzonTitle_idusu}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{buzonController.destroyAndView}" value="#{bundle.ViewBuzonDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBuzonEditLink}"/>
+                <br />
+                <h:commandLink action="#{buzonController.prepareCreate}" value="#{bundle.ViewBuzonCreateLink}" />
+                <br />
+                <h:commandLink action="#{buzonController.prepareList}" value="#{bundle.ViewBuzonShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBuzonIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

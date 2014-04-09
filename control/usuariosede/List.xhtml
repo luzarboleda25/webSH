@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUsuariosedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListUsuariosedeEmpty}" rendered="#{usuariosedeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{usuariosedeController.items.rowCount > 0}">
+                    <h:outputText value="#{usuariosedeController.pagination.pageFirstItem + 1}..#{usuariosedeController.pagination.pageLastItem + 1}/#{usuariosedeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{usuariosedeController.previous}" value="#{bundle.Previous} #{usuariosedeController.pagination.pageSize}" rendered="#{usuariosedeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{usuariosedeController.next}" value="#{bundle.Next} #{usuariosedeController.pagination.pageSize}" rendered="#{usuariosedeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{usuariosedeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuariosedeTitle_iduse}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iduse}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuariosedeTitle_idusu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idusu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuariosedeTitle_idsed}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idsed}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{usuariosedeController.prepareView}" value="#{bundle.ListUsuariosedeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usuariosedeController.prepareEdit}" value="#{bundle.ListUsuariosedeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usuariosedeController.destroy}" value="#{bundle.ListUsuariosedeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{usuariosedeController.prepareCreate}" value="#{bundle.ListUsuariosedeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListUsuariosedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

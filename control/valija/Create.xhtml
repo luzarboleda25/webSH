@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateValijaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_idval}" for="idval" />
+                    <h:inputText id="idval" value="#{valijaController.selected.idval}" title="#{bundle.CreateValijaTitle_idval}" required="true" requiredMessage="#{bundle.CreateValijaRequiredMessage_idval}"/>
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_asuntoval}" for="asuntoval" />
+                    <h:inputText id="asuntoval" value="#{valijaController.selected.asuntoval}" title="#{bundle.CreateValijaTitle_asuntoval}" />
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_fechaval}" for="fechaval" />
+                    <h:inputText id="fechaval" value="#{valijaController.selected.fechaval}" title="#{bundle.CreateValijaTitle_fechaval}" required="true" requiredMessage="#{bundle.CreateValijaRequiredMessage_fechaval}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_fechaalerval}" for="fechaalerval" />
+                    <h:inputText id="fechaalerval" value="#{valijaController.selected.fechaalerval}" title="#{bundle.CreateValijaTitle_fechaalerval}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_statusval}" for="statusval" />
+                    <h:inputText id="statusval" value="#{valijaController.selected.statusval}" title="#{bundle.CreateValijaTitle_statusval}" />
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_zoomval}" for="zoomval" />
+                    <h:inputText id="zoomval" value="#{valijaController.selected.zoomval}" title="#{bundle.CreateValijaTitle_zoomval}" />
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_iddval}" for="iddval" />
+                    <h:inputText id="iddval" value="#{valijaController.selected.iddval}" title="#{bundle.CreateValijaTitle_iddval}" />
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_idusu}" for="idusu" />
+                    <h:selectOneMenu id="idusu" value="#{valijaController.selected.idusu}" title="#{bundle.CreateValijaTitle_idusu}" required="true" requiredMessage="#{bundle.CreateValijaRequiredMessage_idusu}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_origenval}" for="origenval" />
+                    <h:selectOneMenu id="origenval" value="#{valijaController.selected.origenval}" title="#{bundle.CreateValijaTitle_origenval}" required="true" requiredMessage="#{bundle.CreateValijaRequiredMessage_origenval}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateValijaLabel_destinoval}" for="destinoval" />
+                    <h:selectOneMenu id="destinoval" value="#{valijaController.selected.destinoval}" title="#{bundle.CreateValijaTitle_destinoval}" required="true" requiredMessage="#{bundle.CreateValijaRequiredMessage_destinoval}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{valijaController.create}" value="#{bundle.CreateValijaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{valijaController.prepareList}" value="#{bundle.CreateValijaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateValijaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

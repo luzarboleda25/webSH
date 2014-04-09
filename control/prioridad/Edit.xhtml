@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPrioridadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPrioridadLabel_idpri}" for="idpri" />
+                    <h:inputText id="idpri" value="#{prioridadController.selected.idpri}" title="#{bundle.EditPrioridadTitle_idpri}" required="true" requiredMessage="#{bundle.EditPrioridadRequiredMessage_idpri}"/>
+                    <h:outputLabel value="#{bundle.EditPrioridadLabel_nombrepri}" for="nombrepri" />
+                    <h:inputText id="nombrepri" value="#{prioridadController.selected.nombrepri}" title="#{bundle.EditPrioridadTitle_nombrepri}" required="true" requiredMessage="#{bundle.EditPrioridadRequiredMessage_nombrepri}"/>
+                    <h:outputLabel value="#{bundle.EditPrioridadLabel_descripcionpri}" for="descripcionpri" />
+                    <h:inputText id="descripcionpri" value="#{prioridadController.selected.descripcionpri}" title="#{bundle.EditPrioridadTitle_descripcionpri}" />
+                </h:panelGrid>
+                <h:commandLink action="#{prioridadController.update}" value="#{bundle.EditPrioridadSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPrioridadViewLink}"/>
+                <br />
+                <h:commandLink action="#{prioridadController.prepareList}" value="#{bundle.EditPrioridadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPrioridadIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

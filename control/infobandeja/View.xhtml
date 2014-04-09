@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewInfobandejaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewInfobandejaLabel_idiba}"/>
+                    <h:outputText value="#{infobandejaController.selected.idiba}" title="#{bundle.ViewInfobandejaTitle_idiba}"/>
+                    <h:outputText value="#{bundle.ViewInfobandejaLabel_nombreiba}"/>
+                    <h:outputText value="#{infobandejaController.selected.nombreiba}" title="#{bundle.ViewInfobandejaTitle_nombreiba}"/>
+                    <h:outputText value="#{bundle.ViewInfobandejaLabel_descripcioniba}"/>
+                    <h:outputText value="#{infobandejaController.selected.descripcioniba}" title="#{bundle.ViewInfobandejaTitle_descripcioniba}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{infobandejaController.destroyAndView}" value="#{bundle.ViewInfobandejaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewInfobandejaEditLink}"/>
+                <br />
+                <h:commandLink action="#{infobandejaController.prepareCreate}" value="#{bundle.ViewInfobandejaCreateLink}" />
+                <br />
+                <h:commandLink action="#{infobandejaController.prepareList}" value="#{bundle.ViewInfobandejaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewInfobandejaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

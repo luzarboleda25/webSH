@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAreatrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAreatrabajoEmpty}" rendered="#{areatrabajoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{areatrabajoController.items.rowCount > 0}">
+                    <h:outputText value="#{areatrabajoController.pagination.pageFirstItem + 1}..#{areatrabajoController.pagination.pageLastItem + 1}/#{areatrabajoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{areatrabajoController.previous}" value="#{bundle.Previous} #{areatrabajoController.pagination.pageSize}" rendered="#{areatrabajoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{areatrabajoController.next}" value="#{bundle.Next} #{areatrabajoController.pagination.pageSize}" rendered="#{areatrabajoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{areatrabajoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAreatrabajoTitle_idatr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idatr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAreatrabajoTitle_nombreatr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreatr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAreatrabajoTitle_descripcionatr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionatr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{areatrabajoController.prepareView}" value="#{bundle.ListAreatrabajoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{areatrabajoController.prepareEdit}" value="#{bundle.ListAreatrabajoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{areatrabajoController.destroy}" value="#{bundle.ListAreatrabajoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{areatrabajoController.prepareCreate}" value="#{bundle.ListAreatrabajoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAreatrabajoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAdjuntoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAdjuntoLabel_idadj}" for="idadj" />
+                    <h:inputText id="idadj" value="#{adjuntoController.selected.idadj}" title="#{bundle.EditAdjuntoTitle_idadj}" required="true" requiredMessage="#{bundle.EditAdjuntoRequiredMessage_idadj}"/>
+                    <h:outputLabel value="#{bundle.EditAdjuntoLabel_nombreadj}" for="nombreadj" />
+                    <h:inputText id="nombreadj" value="#{adjuntoController.selected.nombreadj}" title="#{bundle.EditAdjuntoTitle_nombreadj}" required="true" requiredMessage="#{bundle.EditAdjuntoRequiredMessage_nombreadj}"/>
+                    <h:outputLabel value="#{bundle.EditAdjuntoLabel_urladj}" for="urladj" />
+                    <h:inputText id="urladj" value="#{adjuntoController.selected.urladj}" title="#{bundle.EditAdjuntoTitle_urladj}" required="true" requiredMessage="#{bundle.EditAdjuntoRequiredMessage_urladj}"/>
+                    <h:outputLabel value="#{bundle.EditAdjuntoLabel_iddoc}" for="iddoc" />
+                    <h:inputText id="iddoc" value="#{adjuntoController.selected.iddoc}" title="#{bundle.EditAdjuntoTitle_iddoc}" />
+                    <h:outputLabel value="#{bundle.EditAdjuntoLabel_idpaq}" for="idpaq" />
+                    <h:selectOneMenu id="idpaq" value="#{adjuntoController.selected.idpaq}" title="#{bundle.EditAdjuntoTitle_idpaq}" >
+                        <f:selectItems value="#{paqueteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{adjuntoController.update}" value="#{bundle.EditAdjuntoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAdjuntoViewLink}"/>
+                <br />
+                <h:commandLink action="#{adjuntoController.prepareList}" value="#{bundle.EditAdjuntoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAdjuntoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

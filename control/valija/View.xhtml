@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewValijaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewValijaLabel_idval}"/>
+                    <h:outputText value="#{valijaController.selected.idval}" title="#{bundle.ViewValijaTitle_idval}"/>
+                    <h:outputText value="#{bundle.ViewValijaLabel_asuntoval}"/>
+                    <h:outputText value="#{valijaController.selected.asuntoval}" title="#{bundle.ViewValijaTitle_asuntoval}"/>
+                    <h:outputText value="#{bundle.ViewValijaLabel_fechaval}"/>
+                    <h:outputText value="#{valijaController.selected.fechaval}" title="#{bundle.ViewValijaTitle_fechaval}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewValijaLabel_fechaalerval}"/>
+                    <h:outputText value="#{valijaController.selected.fechaalerval}" title="#{bundle.ViewValijaTitle_fechaalerval}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewValijaLabel_statusval}"/>
+                    <h:outputText value="#{valijaController.selected.statusval}" title="#{bundle.ViewValijaTitle_statusval}"/>
+                    <h:outputText value="#{bundle.ViewValijaLabel_zoomval}"/>
+                    <h:outputText value="#{valijaController.selected.zoomval}" title="#{bundle.ViewValijaTitle_zoomval}"/>
+                    <h:outputText value="#{bundle.ViewValijaLabel_iddval}"/>
+                    <h:outputText value="#{valijaController.selected.iddval}" title="#{bundle.ViewValijaTitle_iddval}"/>
+                    <h:outputText value="#{bundle.ViewValijaLabel_idusu}"/>
+                    <h:outputText value="#{valijaController.selected.idusu}" title="#{bundle.ViewValijaTitle_idusu}"/>
+                    <h:outputText value="#{bundle.ViewValijaLabel_origenval}"/>
+                    <h:outputText value="#{valijaController.selected.origenval}" title="#{bundle.ViewValijaTitle_origenval}"/>
+                    <h:outputText value="#{bundle.ViewValijaLabel_destinoval}"/>
+                    <h:outputText value="#{valijaController.selected.destinoval}" title="#{bundle.ViewValijaTitle_destinoval}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{valijaController.destroyAndView}" value="#{bundle.ViewValijaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewValijaEditLink}"/>
+                <br />
+                <h:commandLink action="#{valijaController.prepareCreate}" value="#{bundle.ViewValijaCreateLink}" />
+                <br />
+                <h:commandLink action="#{valijaController.prepareList}" value="#{bundle.ViewValijaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewValijaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
